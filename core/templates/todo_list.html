@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .task {
+            background: #fafafa;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+            border-left-color: gray;
+        }
+
+        .actions {
+            margin-top: 5px;
+        }
+
+        .actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .delete {
+            color: red;
+        }
+
+        .toggle {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>My To-Do List</h1>
+
+    <!-- Form -->
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Task title..." required>
+        <textarea name="description" placeholder="Task description..."></textarea>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Tasks -->
+    {% for task in tasks %}
+        <div class="task {% if task.completed %}completed{% endif %}">
+            <strong>{{ task.title }}</strong>
+            <p>{{ task.description }}</p>
+
+            <div class="actions">
+                <a class="toggle" href="{% url 'toggle_task' task.id %}">✔ Complete</a>
+                <a class="delete" href="{% url 'delete_task' task.id %}">❌ Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No tasks yet</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>
