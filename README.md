@@ -1,4 +1,9 @@
+## Developers:
+Muperi Allan M250043
+Hove Mitchell M251064
+
 # 📝 Django To-Do List App
+
 
 ## 📌 Overview
 
