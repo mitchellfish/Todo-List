@@ -2,6 +2,8 @@
 Muperi Allan M250043
 Hove Mitchell M251064
 
+---
+
 # 📝 Django To-Do List App
 
 
@@ -42,7 +44,7 @@ project/
 │   ├── views.py
 │   ├── urls.py
 │   ├── templates/
-│   │   └── tasks.html
+│   │   └── todo_list.html
 │── manage.py
 ```
 
@@ -101,17 +103,4 @@ python manage.py runserver
 ```
 http://127.0.0.1:8000/
 ```
-
----
-
-## 🧠 What I Learned
-
-* How Django models work
-* Handling user input with forms
-* Rendering dynamic content with templates
-* Managing database records (CRUD)
-* Basic project structure in Django
-
----
-
 
